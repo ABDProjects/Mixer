@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb:hover, .history-list::-webkit-scrollbar-thumb:hove
 }
 
 .art-background, .art-background::after, .grain { position: absolute; inset: -40px; }
-.art-background { z-index: -3; background: radial-gradient(circle at 50% 40%, #34402b 0, #15171a 43%, #08080b 78%); background-size: cover; background-position: center; filter: blur(48px) saturate(1.08); transform: scale(1.14); opacity: .72; transition: background-image .7s ease, opacity .5s; }
+.art-background { z-index: -3; background: #151519 url("assets/cover.png") center / cover no-repeat; filter: blur(48px) saturate(1.08); transform: scale(1.14); opacity: .72; transition: background-image .7s ease, opacity .5s; }
 .art-background::after { content: ""; background: linear-gradient(180deg, rgba(8,8,11,.48), rgba(8,8,11,.82) 72%, #08080b); }
 .grain { pointer-events: none; z-index: -1; opacity: .035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); }
 
@@ -52,11 +52,11 @@ body::-webkit-scrollbar-thumb:hover, .history-list::-webkit-scrollbar-thumb:hove
 .top-action:hover, .top-action:focus-visible { border-color: rgba(255,255,255,.48); color: var(--ink); outline: none; }
 
 .player { display: flex; align-items: center; flex-direction: column; justify-content: center; text-align: center; padding: 32px 0; }
-.cover-wrap { height: min(38vh, 330px); width: min(38vh, 330px); min-height: 185px; min-width: 185px; position: relative; border-radius: 4px; box-shadow: 0 24px 60px rgba(0,0,0,.5); background: #202127; }
+.cover-wrap { height: min(38vh, 330px); width: min(38vh, 330px); min-height: 185px; min-width: 185px; position: relative; border-radius: 15px; box-shadow: 0 24px 60px rgba(0,0,0,.5); background: #202127; }
 #coverArt, #coverArtNext, .cover-fallback { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: inherit; }
 #coverArt, #coverArtNext { z-index: 1; object-fit: cover; opacity: 0; transition: opacity .7s ease-in-out; }
 #coverArt.ready, #coverArtNext.ready { opacity: 1; }
-.cover-fallback { z-index: 0; display: grid; place-items: center; background: radial-gradient(circle at 68% 25%, #efff67, #849a31 20%, #16181a 68%); color: #131510; font-size: clamp(90px, 20vw, 190px); font-weight: 700; letter-spacing: -.15em; transition: opacity .45s ease; }
+.cover-fallback { z-index: 0; display: grid; place-items: center; background: #202127 url("assets/cover.png") center / cover no-repeat; transition: opacity .45s ease; }
 .cover-wrap.has-art .cover-fallback { opacity: 0; }
 
 .track-info { margin-top: clamp(22px, 4vh, 36px); max-width: min(550px, 88vw); }
