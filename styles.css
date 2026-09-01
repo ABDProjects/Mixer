@@ -16,6 +16,7 @@ body {
   font-family: "Montserrat", sans-serif;
   scrollbar-color: #6f6f75 rgba(255,255,255,.07);
   scrollbar-width: thin;
+  overflow: hidden;
 }
 
 body::-webkit-scrollbar, .history-list::-webkit-scrollbar, .request-list::-webkit-scrollbar { width: 9px; }
