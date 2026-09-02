@@ -1,5 +1,6 @@
 const API_URL = "https://azuracast.aidanbray.com/api/nowplaying/mixer";
 const API_ORIGIN = "https://azuracast.aidanbray.com";
+const STREAM_URL = "https://azuracast.aidanbray.com/listen/mixer/radio.mp3";
 const REQUESTS_URL = `${API_ORIGIN}/api/station/mixer/requests`;
 const REFRESH_MS = 15000;
 const VOLUME_STORAGE_KEY = "mixer-radio-volume";
@@ -195,6 +196,8 @@ async function getNowPlaying() {
 async function togglePlayback() {
   if (audio.paused) {
     try {
+      audio.src = `${STREAM_URL}?live=${Date.now()}`;
+      audio.load();
       await audio.play();
     } catch (error) {
       console.warn("Could not start radio stream:", error);
@@ -240,6 +243,14 @@ document.querySelectorAll(".panel").forEach((panel) => {
     closePanel(panel);
   });
 });
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch((error) => {
+      console.warn("Could not register the MIXER service worker:", error);
+    });
+  });
+}
 
 getNowPlaying();
 loadRequests();
