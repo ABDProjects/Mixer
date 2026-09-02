@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "MIXER Radio",
+  "short_name": "MIXER",
+  "description": "Listen live to MIXER Radio.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08080b",
+  "theme_color": "#08080b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/cover.png",
+      "sizes": "2048x2048",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
