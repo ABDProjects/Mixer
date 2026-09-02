@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MIXER" />
     <title>MIXER</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/cover.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,7 +19,6 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="assets/favicon.png" type="image/png"/>
   </head>
   <body>
     <main class="radio-shell">
@@ -62,7 +67,7 @@
       </footer>
     </main>
 
-    <audio id="radioAudio" preload="none" src="https://azuracast.aidanbray.com/listen/mixer/radio.mp3"></audio>
+    <audio id="radioAudio" preload="none"></audio>
     <dialog class="panel" id="historyPanel" aria-labelledby="historyHeading">
       <div class="panel-header"><div><p>RECENTLY PLAYED</p><h2 id="historyHeading">Song history</h2></div><button class="panel-close" type="button" aria-label="Close history">×</button></div>
       <div class="history-list" id="historyList" aria-live="polite"><p>Loading history…</p></div>
