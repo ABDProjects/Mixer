@@ -14,27 +14,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=23" />
   </head>
   <body>
-    <main class="radio-shell">
+    <main class="radio-shell" id="radioPage">
       <div class="art-background" id="artBackground" aria-hidden="true"></div>
+      <canvas class="visualizer" id="visualizer" aria-hidden="true"></canvas>
       <div class="grain" aria-hidden="true"></div>
 
       <header class="topbar">
-        <img draggable="false" class="logo logo-header" src="/assets/mixer.png" alt="MIXER" />
+        <img draggable="false" class="logo logo-header logo-header-full" src="/assets/mixer.png" alt="MIXER" />
+        <img draggable="false" class="logo logo-header logo-header-mark" src="/assets/m.png" alt="MIXER" />
         <div class="top-actions">
-          <button class="top-action" id="historyButton" type="button"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i><span>HISTORY</span></button>
-          <button class="top-action" id="requestButton" type="button"><i class="fa-solid fa-music" aria-hidden="true"></i><span>REQUEST</span></button>
+          <button class="top-action" id="historyButton" type="button"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i><span class="action-label">HISTORY</span></button>
+          <button class="top-action request-action" id="requestButton" type="button"><i class="fa-solid fa-music" aria-hidden="true"></i><span class="action-label">REQUEST</span><span class="request-listeners" aria-label="Listener count"><i class="fa-solid fa-headphones" aria-hidden="true"></i><b id="listenerCount" aria-live="polite">—</b></span></button>
+          <div class="secondary-actions" id="secondaryActions">
+            <button class="top-action visualizer-button" id="visualizerToggle" type="button" aria-pressed="false"><i class="fa-solid fa-wave-square" aria-hidden="true"></i><span class="action-label">VISUALS</span></button>
+            <button class="top-action" id="integrationsButton" type="button"><i class="fa-solid fa-plug" aria-hidden="true"></i><span class="action-label">INTEGRATIONS</span></button>
+          </div>
+          <button class="top-action menu-toggle" id="menuToggle" type="button" aria-label="Open extra controls" aria-controls="secondaryActions" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
         </div>
       </header>
 
       <section class="player" aria-labelledby="stationName">
-        <img draggable="false" class="logo logo-main" id="stationName" src="/assets/m.png" alt="MIXER" />
 
         <div class="cover-wrap" id="coverWrap">
           <img draggable="false" id="coverArt" class="ready" src="/assets/cover.png"/>
@@ -60,14 +66,79 @@
         </div>
       </section>
 
-      <footer>
-        <span>LIVE FROM THE MIXER</span>
-        <span id="listenerCount">— LISTENING</span>
-        <span>192 KBPS MP3</span>
-      </footer>
     </main>
 
-    <audio id="radioAudio" preload="none"></audio>
+    <section class="integrations-page" id="integrationsPage" aria-hidden="true">
+      <header class="integrations-header">
+        <img draggable="false" class="logo logo-header logo-header-full" src="/assets/mixer.png" alt="MIXER" />
+        <img draggable="false" class="logo logo-header logo-header-mark" src="/assets/m.png" alt="MIXER" />
+        <button class="back-button" id="radioPageButton" type="button"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>BACK</span></button>
+      </header>
+      <div class="integrations-content">
+        <h1>Intergrations</h1>
+        <p class="page-intro">Add MIXER to your own platforms for free and get featured here!</p>
+        <div class="integration-grid">
+          <article class="integration-card">
+            <div class="integration-art api"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+            <div><h2>API</h2><p>Get access to MIXER's data and functionality through custom API links.</p></div>
+            <button class="integration-link" id="apiPageButton" type="button">Explore API <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+          <article class="integration-card">
+            <div class="integration-art question"><i class="fa-brands fa-instagram" aria-hidden="true"></i></div>
+            <div><h2>Your Platform</h2><p>This could be your spot.</p></div>
+            <button class="integration-link" type="button">Put In A Request <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+          </article>
+          <article class="integration-card">
+            <div class="integration-art tiktok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></div>
+            <div><h2>TikTok</h2><p>Give listeners a quick route from the feed into your live sound.</p></div>
+            <button class="integration-link" type="button">ADD LINK <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+          </article>
+          <article class="integration-card">
+            <div class="integration-art soundcloud"><i class="fa-brands fa-soundcloud" aria-hidden="true"></i></div>
+            <div><h2>SoundCloud</h2><p>Feature mixes, resident recordings, and your latest station uploads.</p></div>
+            <button class="integration-link" type="button">ADD LINK <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="integrations-page api-page" id="apiPage" aria-hidden="true">
+      <header class="integrations-header">
+        <img draggable="false" class="logo logo-header logo-header-full" src="/assets/mixer.png" alt="MIXER" />
+        <img draggable="false" class="logo logo-header logo-header-mark" src="/assets/m.png" alt="MIXER" />
+        <button class="back-button" id="integrationsPageButton" type="button"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>INTEGRATIONS</span></button>
+      </header>
+      <div class="integrations-content api-content">
+        <p class="page-kicker">INTERGRATIONS</p>
+        <h1>API</h1>
+        <p class="page-intro">Bring MIXER’s live data and audio into your own projects.</p>
+        <div class="api-endpoints">
+          <article class="api-endpoint">
+            <div class="api-endpoint-heading"><span class="api-method">GET</span><h2>Live station data</h2></div>
+            <p>Now playing, listener count, DJ status, and recent history.</p>
+            <code class="api-path">https://azuracast.aidanbray.com/api/nowplaying/mixer</code>
+          </article>
+          <article class="api-endpoint">
+            <div class="api-endpoint-heading"><span class="api-method">GET / POST</span><h2>Song requests</h2></div>
+            <p>List requestable songs, then submit a request using its <code>request_url</code>.</p>
+            <code class="api-path">https://azuracast.aidanbray.com/api/station/mixer/requests</code>
+          </article>
+          <article class="api-endpoint">
+            <div class="api-endpoint-heading"><span class="api-method">AUDIO</span><h2>Live stream</h2></div>
+            <p>Listen to MIXER live in your app or audio player.</p>
+            <code class="api-path">https://azuracast.aidanbray.com/listen/mixer/radio.mp3</code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <aside class="mini-player" aria-label="MIXER player">
+      <img id="miniArt" src="/assets/cover.png" alt="Current track artwork" />
+      <div class="mini-track"><strong id="miniTitle">MIXER Radio</strong><span id="miniArtist">Live radio</span></div>
+      <button class="mini-play" id="miniPlayButton" type="button" aria-label="Play MIXER live radio"><i id="miniPlayIcon" class="fa-solid fa-play" aria-hidden="true"></i></button>
+    </aside>
+
+    <audio id="radioAudio" preload="none" crossorigin="anonymous"></audio>
     <dialog class="panel" id="historyPanel" aria-labelledby="historyHeading">
       <div class="panel-header"><div><p>RECENTLY PLAYED</p><h2 id="historyHeading">Song history</h2></div><button class="panel-close" type="button" aria-label="Close history">×</button></div>
       <div class="history-list" id="historyList" aria-live="polite"><p>Loading history…</p></div>
